@@ -4,6 +4,7 @@ import { CharacterService } from './character.service';
 
 @Module({
   controllers: [CharacterController],
-  providers: [CharacterService]
+  providers: [CharacterService],
+  exports: [CharacterModule],
 })
 export class CharacterModule {}
