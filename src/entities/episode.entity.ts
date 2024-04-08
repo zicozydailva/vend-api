@@ -1,4 +1,4 @@
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity, Index, ManyToOne } from 'typeorm';
 
 import { BaseTable } from '../base';
 import { IEpisode } from 'src/interfaces/episode.interface';
@@ -12,41 +12,32 @@ export class Episode extends BaseTable implements IEpisode {
 
   @Column({
     type: 'varchar',
-    length: 60,
-    nullable: true,
+    nullable: false,
   })
-  @Index()
   name: string;
 
   @Column({
     type: 'varchar',
-    length: 60,
-    nullable: true,
+    nullable: false,
   })
-  @Index()
   release_date: string;
 
   @Column({
     type: 'varchar',
-    length: 60,
-    nullable: true,
+    nullable: false,
   })
-  @Index()
   episode_code: string;
 
   @Column({
     type: 'varchar',
-    length: 60,
-    nullable: true,
   })
-  @Index()
   characters: string;
 
   @Column({
     type: 'varchar',
-    length: 60,
-    nullable: true,
   })
-  @Index()
   episode_comment: string;
+
+  @ManyToOne(() => Episode, (episode) => episode.id)
+  episode: Episode;
 }

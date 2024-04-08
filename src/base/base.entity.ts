@@ -17,14 +17,4 @@ export abstract class BaseTable {
   })
   @CreateDateColumn({ type: 'timestamp' })
   public created_at: Date;
-
-  @Column({
-    type: 'timestamp',
-    default: defaultTimestamp,
-  })
-  @CreateDateColumn({ type: 'timestamp' })
-  public updated_at: Date;
-
-  @DeleteDateColumn()
-  deleted_at?: Date;
 }

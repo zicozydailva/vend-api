@@ -1,7 +1,8 @@
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 
 import { BaseTable } from '../base';
 import { ILocation } from 'src/interfaces/location.interface';
+import { Character } from './character.entity';
 
 @Entity('location')
 export class Location extends BaseTable implements ILocation {
@@ -13,24 +14,24 @@ export class Location extends BaseTable implements ILocation {
   @Column({
     type: 'varchar',
     length: 60,
-    nullable: true,
+    nullable: false,
   })
-  @Index()
   name: string;
 
   @Column({
     type: 'varchar',
     length: 60,
-    nullable: true,
+    nullable: false,
   })
-  @Index()
   latitude: string;
 
   @Column({
     type: 'varchar',
     length: 60,
-    nullable: true,
+    nullable: false,
   })
-  @Index()
   longitude: string;
+
+  @ManyToOne(() => Character, (character) => character.id)
+  character: Character;
 }

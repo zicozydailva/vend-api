@@ -13,7 +13,7 @@ export class Comment extends BaseTable implements IComment {
   @Column({
     type: 'varchar',
     length: 250,
-    nullable: true,
+    nullable: false,
   })
   @Index()
   comment: string;
@@ -21,7 +21,7 @@ export class Comment extends BaseTable implements IComment {
   @Column({
     type: 'varchar',
     length: 60,
-    nullable: true,
+    nullable: false,
   })
   @Index()
   ip_address_location: string;
